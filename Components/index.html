@@ -18,32 +18,84 @@
       <section class="text-title text-black fs-3 fw-bold">Gudel Movies</section>
       <section class="search mt-3 mb-3"><input type="text" /></section>
       <section class="list-film">
-        <section class="row">
-          <section class="col">
-            <section
-              class="card"
-              style="width: 18rem"
-            >
-              <img
-                src="..."
-                class="card-img-top"
-                alt="..."
-              />
-              <section class="card-body">
-                <h5 class="card-title">Avengers</h5>
-                <h6 class="text-muted">20020</h6>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a
-                  href="#"
-                  class="btn btn-primary"
-                  >Show Details</a
-                >
-              </section>
-            </section>
-          </section>
-        </section>
+        <section
+          class="row"
+          id="card-movie"
+        ></section>
       </section>
     </section>
+
+    <!-- Modal Start -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalMovies"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1
+              class="modal-title fs-5"
+              id="staticBackdropLabel"
+            >
+              INFORMATION MOVIE
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section class="container-fluid">
+              <section class="row">
+                <section class="col-md-3">
+                  <img
+                    src=""
+                    alt=""
+                  />
+                </section>
+                <section class="col-md">
+                  <ul class="list-group">
+                    <li class="list-group-item"><h4>Avengers</h4></li>
+                    <li class="list-group-item"><strong>Tahun : </strong>2016</li>
+                    <li class="list-group-item"><strong>Director : </strong>Sayidina</li>
+                    <li class="list-group-item"><strong>Actor : </strong>Gudel , Dony</li>
+                    <li class="list-group-item"><strong>Writer : </strong>Fadil Herdiasnya</li>
+                    <li class="list-group-item">
+                      <strong>Plot : </strong> <br />
+                      twicee
+                    </li>
+                  </ul>
+                </section>
+              </section>
+            </section>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+            >
+              Understood
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal End -->
     <!-- CDN JQUERY -->
     <script
       src="https://code.jquery.com/jquery-3.7.1.min.js"
