@@ -1,10 +1,67 @@
-const row = document.querySelector('#card-movie');
+$('#buttonSearch').on('click', function () {
+  $.ajax({
+    url: `http://www.omdbapi.com/?s=${$(`#input-keyword`).val()}&apikey=20c4741c`,
+    success: (result) => {
+      const moviesList = result.Search;
+      showMovies(moviesList);
 
-function showDetail() {
-  console.log(this.getAttribute('data-imdbID'));
+      // Ketika button showDetail di click
+      $('.showDetail').on('click', showDetail);
+    },
+    error: (e) => {
+      console.log(e.responseText);
+    },
+  });
+});
+
+const row = document.querySelector('#card-movie');
+const popUp = document.querySelector('#contentPopup');
+
+function popUpBox(element, parrent) {
+  const cardHtml = `<section class="container-fluid">
+  <section class="row">
+    <section class="col-md-3">
+      <img
+        src="${element.Poster}"
+        alt="${element.Poster}"
+      />
+    </section>
+    <section class="col-md ms-5">
+      <ul class="list-group">
+        <li class="list-group-item"><h4>${element.Title}</h4></li>
+        <li class="list-group-item"><strong>Rating : </strong>${element.imdbRating}</li>
+        <li class="list-group-item"><strong>Tahun : </strong>${element.Year}</li>
+        <li class="list-group-item"><strong>Director : </strong>${element.Director}</li>
+        <li class="list-group-item"><strong>Actor : </strong>${element.Actors}</li>
+        <li class="list-group-item"><strong>Writer : </strong>${element.Writer}</li>
+        <li class="list-group-item">
+          <strong>Plot : </strong> <br />
+          ${element.Plot}
+        </li>
+      </ul>
+    </section>
+  </section>
+</section>`;
+
+  return (parrent.innerHTML = cardHtml);
 }
 
-function domManipulation(title, years, posterURL, id) {
+function showDetail(e) {
+  e.preventDefault();
+  $.ajax({
+    url: `http://www.omdbapi.com/?i=${this.getAttribute('data-imdbID')}&apikey=20c4741c`,
+
+    success: (result) => {
+      popUpBox(result, popUp);
+    },
+
+    error: (error) => {
+      console.log(error.responseText);
+    },
+  });
+}
+
+function domManipulation(title, years, posterURL, idmdb) {
   const cardHTML = `<section
   class="card"
   style="width: 18rem"
@@ -21,11 +78,10 @@ function domManipulation(title, years, posterURL, id) {
     </p>
     <a
       href="#"
-      class="btn btn-primary"
+      class="btn btn-primary showDetail"
       data-bs-toggle="modal"
       data-bs-target="#modalMovies"
-      data-imdbID = "${id}"
-      id="showDetail"
+      data-imdbID = "${idmdb}"
       >Show Details</a
     >
   </section>
@@ -36,24 +92,12 @@ function domManipulation(title, years, posterURL, id) {
   col.classList.add('col', 'mb-4');
   col.innerHTML = cardHTML.trim();
 
-  row.appendChild(col);
+  return row.appendChild(col);
 }
 
 function showMovies(movies) {
-  movies.forEach((element) => {
+  return movies.forEach((element) => {
     domManipulation(element.Title, element.Year, element.Poster, element.imdbID);
     // console.log(element.imdbID);
   });
 }
-
-$.ajax({
-  url: 'http://www.omdbapi.com/?s=avengers&apikey=20c4741c',
-  success: (result) => {
-    const moviesList = result.Search;
-    showMovies(moviesList);
-    $('#showDetail').on('click', showDetail);
-  },
-  error: (e) => {
-    console.log(e.responseText);
-  },
-});

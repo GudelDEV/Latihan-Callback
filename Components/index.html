@@ -16,7 +16,27 @@
   <body>
     <section class="container mt-5 mb-5">
       <section class="text-title text-black fs-3 fw-bold">Gudel Movies</section>
-      <section class="search mt-3 mb-3"><input type="text" /></section>
+      <section class="search mb-3 mt-3">
+        <div class="row">
+          <div class="input-group mb-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search Movie"
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              id="input-keyword"
+            />
+            <button
+              class="btn btn-outline-secondary"
+              type="button"
+              id="buttonSearch"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </section>
       <section class="list-film">
         <section
           class="row"
@@ -36,7 +56,7 @@
       aria-labelledby="staticBackdropLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h1
@@ -52,31 +72,10 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <section class="container-fluid">
-              <section class="row">
-                <section class="col-md-3">
-                  <img
-                    src=""
-                    alt=""
-                  />
-                </section>
-                <section class="col-md">
-                  <ul class="list-group">
-                    <li class="list-group-item"><h4>Avengers</h4></li>
-                    <li class="list-group-item"><strong>Tahun : </strong>2016</li>
-                    <li class="list-group-item"><strong>Director : </strong>Sayidina</li>
-                    <li class="list-group-item"><strong>Actor : </strong>Gudel , Dony</li>
-                    <li class="list-group-item"><strong>Writer : </strong>Fadil Herdiasnya</li>
-                    <li class="list-group-item">
-                      <strong>Plot : </strong> <br />
-                      twicee
-                    </li>
-                  </ul>
-                </section>
-              </section>
-            </section>
-          </div>
+          <div
+            class="modal-body"
+            id="contentPopup"
+          ></div>
           <div class="modal-footer">
             <button
               type="button"
